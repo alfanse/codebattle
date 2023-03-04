@@ -30,9 +30,7 @@ public class InvertCaseTest {
         );
     }
 
-    /**
-     * first working solution
-     */
+    /** Imperative solution */
     private String invertCaseImperative(String str) {
         StringBuilder sb = new StringBuilder();
         char[] thing = str.toCharArray();
@@ -42,7 +40,17 @@ public class InvertCaseTest {
         return sb.toString();
     }
 
-    /** functional working solution */
+    private char inverseChar(char currentChar) {
+        if (Character.isLowerCase(currentChar)) {
+            return Character.toUpperCase(currentChar);
+        } else if (Character.isUpperCase(currentChar)) {
+            return Character.toLowerCase(currentChar);
+        } else {
+            return currentChar;
+        }
+    }
+
+    /** functional solution */
     private String invertCaseFunctional(String str) {
         return str.chars()
                 .map(this::inverseCharFromInt)
@@ -75,23 +83,13 @@ public class InvertCaseTest {
         }
     }
 
-    private char inverseChar(char currentChar) {
-        if (Character.isLowerCase(currentChar)) {
-            return Character.toUpperCase(currentChar);
-        } else if (Character.isUpperCase(currentChar)) {
-            return Character.toLowerCase(currentChar);
-        } else {
-            return currentChar;
-        }
-    }
-
     @RepeatedTest(1000)
-    void performanceTestImperativeSoln() {
+    void performanceTestImperative() {
         invertCaseImperative("input Some DATA");
     }
 
     @RepeatedTest(1000)
-    void performanceTestFunctionalSoln() {
+    void performanceTestFunctional() {
         invertCaseFunctional("input Some DATA");
     }
 
