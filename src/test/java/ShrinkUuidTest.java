@@ -30,11 +30,12 @@ public class ShrinkUuidTest {
     void shrinkAUuidTest() {
         UUID uuid = UUID.randomUUID();
         String uuidAsString = uuid.toString();
-        assert uuidAsString.length() == 36;
 
         String uuidB64 = shorten(uuid);
-        assertThat(uuidB64.length()).isLessThan(30);
+
         System.out.println("uuid: " + uuidAsString + ", b64: " + uuidB64 + ", length: " + uuidB64.length());
+        assertThat(uuidAsString.length()).isEqualTo(36);
+        assertThat(uuidB64.length()).isEqualTo(22);
 
         UUID expandedUuid = expand(uuidB64);
         assertThat(expandedUuid.toString()).isEqualTo(uuidAsString);
