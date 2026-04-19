@@ -56,21 +56,6 @@ public class InvertCaseTest {
                 .map(this::inverseCharFromInt)
                 .mapToObj(Character::toString)
                 .collect(Collectors.joining());
-
-//                .collect(StringBuilder::new,
-//                        StringBuilder::append,
-//                        (sbl, sbr) -> sbl.append(sbr.toString())
-//                )
-
-//                .collect(
-//                        StringWriter::new,
-//                        StringWriter::write,
-//                        (swl, swr) -> swl.write(swr.toString()))
-//                .toString();
-
-//        StringBuilder sb = new StringBuilder();
-//        str.chars().forEachOrdered(value -> sb.append(Character.toString(inverseCharFromInt(value))));
-//        return sb.toString();
     }
 
     private int inverseCharFromInt(int currentChar) {
